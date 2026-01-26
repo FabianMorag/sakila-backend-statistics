@@ -10,6 +10,5 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
       # Mapeo de scripts a la carpeta de inicialización
       - ./sql_scripts:/docker-entrypoint-initdb.d
