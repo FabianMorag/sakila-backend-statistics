@@ -81,6 +81,7 @@ export class FilmsService {
       where: { film_id: id },
       include: {
         film_category: { select: { category: { select: { name: true } } } },
+        film_actor: { select: { actor: true } },
       },
     });
   }
