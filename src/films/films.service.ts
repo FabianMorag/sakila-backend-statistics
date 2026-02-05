@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
 import { findParamsDto } from './dto/findParams';
 import { film } from '@prisma/client';
@@ -76,13 +76,23 @@ export class FilmsService {
     return { data, meta };
   }
 
-  findOne(id: number) {
-    return this.prisma.film.findUnique({
-      where: { film_id: id },
-      include: {
-        film_category: { select: { category: { select: { name: true } } } },
-        film_actor: { select: { actor: true } },
-      },
-    });
+  async findOne(id: number) {
+    return this.prisma.film
+      .findUniqueOrThrow({
+        where: { film_id: id },
+        include: {
+          film_category: { select: { category: { select: { name: true } } } },
+          film_actor: { select: { actor: true } },
+        },
+      })
+      .catch(() => {
+        throw new HttpException(
+          {
+            status: HttpStatus.NOT_FOUND,
+            error: 'Film not found',
+          },
+          HttpStatus.NOT_FOUND,
+        );
+      });
   }
 }
