@@ -11,11 +11,11 @@ export class findParamsDto {
   @IsOptional()
   @IsPositive()
   @Max(100)
-  limit = 10;
+  limit: number = 10;
 
   @IsOptional()
   @IsPositive()
-  page = 1;
+  page: number = 1;
 
   @IsOptional()
   @IsString()
