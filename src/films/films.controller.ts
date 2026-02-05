@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { FilmsService } from './films.service';
 import { findParamsDto } from './dto/findParams';
 
@@ -12,7 +12,7 @@ export class FilmsController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  findOne(@Param('id') id: number) {
     return this.filmsService.findOne(id);
   }
 }
