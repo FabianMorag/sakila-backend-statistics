@@ -9,4 +9,9 @@ export class ReportsController {
   topCategories() {
     return this.reportsService.topCategories();
   }
+
+  @Get('revenue-over-time')
+  reveneueOverTime() {
+    return this.reportsService.reveneueOverTime();
+  }
 }

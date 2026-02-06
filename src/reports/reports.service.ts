@@ -23,4 +23,17 @@ export class ReportsService {
       LIMIT 5
     `;
   }
+
+  reveneueOverTime() {
+    return this.prisma.$queryRaw<
+      Array<{ month: string; total_revenue: number }>
+    >`
+       SELECT
+         DATE_TRUNC('month', p.payment_date) AS month,
+         SUM(p.amount) AS total_revenue
+       FROM payment p
+       GROUP BY month
+       ORDER BY month
+     `;
+  }
 }
