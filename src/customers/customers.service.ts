@@ -47,4 +47,21 @@ export class CustomersService {
         );
       });
   }
+
+  topCustomers() {
+    return this.prisma.$queryRaw<
+      Array<{ last_name: string; first_name: string; total_rentals: number }>
+    >`
+      SELECT 
+        c.first_name,
+        c.last_name,
+        SUM(amount) as total_spent 
+      FROM customer as c 
+      INNER JOIN payment p 
+      ON c.customer_id = p.customer_id
+      GROUP BY c.customer_id
+      ORDER BY total_spent DESC
+      LIMIT 10
+      `;
+  }
 }

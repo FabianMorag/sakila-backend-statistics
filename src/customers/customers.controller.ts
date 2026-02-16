@@ -11,6 +11,11 @@ export class CustomersController {
     return this.customersService.findAll(params);
   }
 
+  @Get('top-customers')
+  topCustomers() {
+    return this.customersService.topCustomers();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.customersService.findOne(id);
