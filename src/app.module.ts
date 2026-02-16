@@ -5,6 +5,7 @@ import { FilmsModule } from './films/films.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { ReportsModule } from './reports/reports.module';
+import { CustomersModule } from './customers/customers.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ReportsModule } from './reports/reports.module';
     FilmsModule,
     PrismaModule,
     ReportsModule,
+    CustomersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
