@@ -10,7 +10,7 @@ export class FilmsService {
 
   async findAll(
     params: findParamsDto,
-  ): Promise<{ data: film[]; meta: Metadata }> {
+  ): Promise<{ films: film[]; meta: Metadata }> {
     const { limit, page, search, genre, sortBy, sortOrder } = params;
 
     const take = limit;
@@ -55,7 +55,7 @@ export class FilmsService {
       [sortBy]: sortOrder,
     };
 
-    const [data, total] = await this.prisma.$transaction([
+    const [films, total] = await this.prisma.$transaction([
       this.prisma.film.findMany({
         skip,
         take,
@@ -73,7 +73,7 @@ export class FilmsService {
       totalPages: Math.ceil(total / limit),
     };
 
-    return { data, meta };
+    return { films, meta };
   }
 
   async findOne(id: number) {
