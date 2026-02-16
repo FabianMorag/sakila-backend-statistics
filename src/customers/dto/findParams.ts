@@ -23,6 +23,10 @@ export class findParamsDto {
   search: string;
 
   @IsOptional()
+  @IsIn(['first_name', 'last_name'])
+  sortBy: string = 'first_name';
+
+  @IsOptional()
   @IsIn(['asc', 'desc'])
   sortOrder: 'asc' | 'desc' = 'asc';
 }

@@ -7,7 +7,7 @@ export class CustomersService {
   constructor(private prisma: PrismaService) {}
 
   findAll(params: findParamsDto) {
-    const { limit, page, search } = params;
+    const { limit, page, search, sortBy, sortOrder } = params;
 
     const take = limit;
     const skip = (page - 1) * limit;
@@ -20,11 +20,15 @@ export class CustomersService {
           ],
         }
       : undefined;
+    const orderBy = {
+      [sortBy]: sortOrder,
+    };
 
     return this.prisma.customer.findMany({
       take,
       skip,
       where,
+      orderBy,
     });
   }
 
