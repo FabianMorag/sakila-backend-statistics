@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   getHello(): string {
-    const HTMLDivElement = `
+    const htmlResponse = `
     <section style="min-height:100dvh;align-content:center;">
       <div style="margin:auto;width:fit-content;display:grid;place-items:center;gap:1rem;">
         <h1>Welcome to the Sakila API!</h1>
@@ -12,6 +12,6 @@ export class AppService {
       </div>
     </section>
     `;
-    return HTMLDivElement;
+    return htmlResponse;
   }
 }
