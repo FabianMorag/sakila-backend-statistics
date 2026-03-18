@@ -25,15 +25,13 @@ export class ReportsService {
   }
 
   revenueOverTime() {
-    return this.prisma.$queryRaw<
-      Array<{ month: string; total_revenue: number }>
-    >`
+    return this.prisma.$queryRaw<Array<{ date: Date; total_revenue: string }>>`
        SELECT
-         DATE_TRUNC('month', p.payment_date) AS month,
+         DATE_TRUNC('month', p.payment_date) AS date,
          SUM(p.amount) AS total_revenue
        FROM payment p
-       GROUP BY month
-       ORDER BY month
+       GROUP BY date
+       ORDER BY date
      `;
   }
 }
