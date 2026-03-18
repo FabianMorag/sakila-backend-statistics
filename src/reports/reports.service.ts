@@ -24,7 +24,7 @@ export class ReportsService {
     `;
   }
 
-  reveneueOverTime() {
+  revenueOverTime() {
     return this.prisma.$queryRaw<
       Array<{ month: string; total_revenue: number }>
     >`

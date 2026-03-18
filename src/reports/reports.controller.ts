@@ -12,6 +12,6 @@ export class ReportsController {
 
   @Get('revenue-over-time')
   reveneueOverTime() {
-    return this.reportsService.reveneueOverTime();
+    return this.reportsService.revenueOverTime();
   }
 }
