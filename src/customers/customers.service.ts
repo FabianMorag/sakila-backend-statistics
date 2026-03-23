@@ -61,7 +61,7 @@ export class CustomersService {
       ON c.customer_id = p.customer_id
       GROUP BY c.customer_id
       ORDER BY total_spent DESC
-      LIMIT 10
+      LIMIT 5
       `;
   }
 }
