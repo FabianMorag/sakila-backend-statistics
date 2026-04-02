@@ -1,8 +1,8 @@
 generator client {
   provider        = "prisma-client"
   output          = "../node_modules/.prisma/client"
-  moduleFormat    = "cjs"
   previewFeatures = ["views"]
+  moduleFormat    = "cjs"
 }
 
 datasource db {
@@ -75,12 +75,12 @@ model customer {
   address          address            @relation(fields: [address_id], references: [address_id])
   store            store              @relation(fields: [store_id], references: [store_id])
   payment          payment[]
-  payment_p2007_01 payment_p2007_01[] @ignore
-  payment_p2007_02 payment_p2007_02[] @ignore
-  payment_p2007_03 payment_p2007_03[] @ignore
-  payment_p2007_04 payment_p2007_04[] @ignore
-  payment_p2007_05 payment_p2007_05[] @ignore
-  payment_p2007_06 payment_p2007_06[] @ignore
+  payment_p2007_01 payment_p2007_01[]
+  payment_p2007_02 payment_p2007_02[]
+  payment_p2007_03 payment_p2007_03[]
+  payment_p2007_04 payment_p2007_04[]
+  payment_p2007_05 payment_p2007_05[]
+  payment_p2007_06 payment_p2007_06[]
   rental           rental[]
 
   @@index([address_id], map: "idx_fk_address_id")
@@ -289,12 +289,12 @@ model rental {
   staff_id         Int
   last_update      DateTime           @default(now()) @db.Timestamp(6)
   payment          payment[]
-  payment_p2007_01 payment_p2007_01[] @ignore
-  payment_p2007_02 payment_p2007_02[] @ignore
-  payment_p2007_03 payment_p2007_03[] @ignore
-  payment_p2007_04 payment_p2007_04[] @ignore
-  payment_p2007_05 payment_p2007_05[] @ignore
-  payment_p2007_06 payment_p2007_06[] @ignore
+  payment_p2007_01 payment_p2007_01[]
+  payment_p2007_02 payment_p2007_02[]
+  payment_p2007_03 payment_p2007_03[]
+  payment_p2007_04 payment_p2007_04[]
+  payment_p2007_05 payment_p2007_05[]
+  payment_p2007_06 payment_p2007_06[]
   customer         customer           @relation(fields: [customer_id], references: [customer_id])
   inventory        inventory          @relation(fields: [inventory_id], references: [inventory_id])
   staff            staff              @relation(fields: [staff_id], references: [staff_id])
@@ -316,12 +316,12 @@ model staff {
   last_update                         DateTime           @default(now()) @db.Timestamp(6)
   picture                             Bytes?
   payment                             payment[]
-  payment_p2007_01                    payment_p2007_01[] @ignore
-  payment_p2007_02                    payment_p2007_02[] @ignore
-  payment_p2007_03                    payment_p2007_03[] @ignore
-  payment_p2007_04                    payment_p2007_04[] @ignore
-  payment_p2007_05                    payment_p2007_05[] @ignore
-  payment_p2007_06                    payment_p2007_06[] @ignore
+  payment_p2007_01                    payment_p2007_01[]
+  payment_p2007_02                    payment_p2007_02[]
+  payment_p2007_03                    payment_p2007_03[]
+  payment_p2007_04                    payment_p2007_04[]
+  payment_p2007_05                    payment_p2007_05[]
+  payment_p2007_06                    payment_p2007_06[]
   rental                              rental[]
   address                             address            @relation(fields: [address_id], references: [address_id])
   store_staff_store_idTostore         store              @relation("staff_store_idTostore", fields: [store_id], references: [store_id], onDelete: NoAction, onUpdate: NoAction)
