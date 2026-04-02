@@ -165,7 +165,7 @@ model payment {
   amount       Decimal  @db.Decimal(5, 2)
   payment_date DateTime @db.Timestamp(6)
   customer     customer @relation(fields: [customer_id], references: [customer_id])
-  rental       rental   @relation(fields: [rental_id], references: [rental_id], onDelete: SetNull)
+  rental       rental   @relation(fields: [rental_id], references: [rental_id], onDelete: NoAction)
   staff        staff    @relation(fields: [staff_id], references: [staff_id])
 
   @@index([customer_id], map: "idx_fk_customer_id")
