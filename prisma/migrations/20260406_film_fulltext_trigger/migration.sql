@@ -7,10 +7,10 @@ CREATE TRIGGER film_fulltext_trigger
 BEFORE INSERT OR UPDATE ON "film"
 FOR EACH ROW
 EXECUTE FUNCTION tsvector_update_trigger(
-  fulltext,
+  'fulltext',
   'pg_catalog.english',
-  title,
-  description
+  'title',
+  'description'
 );
 
 -- Backfill any existing rows that might have been inserted before the trigger existed.
